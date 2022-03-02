@@ -9,18 +9,30 @@ public class Employee {
 	
 	static Scanner s = new Scanner(System.in);
 	
-	public static void ApproveOrDenyAccount(String customerName) {
-		System.out.println("Primary account holder: " + customerName + 
-				"\n 1 - Approve or 2 - Deny?");
-		int i = s.nextInt();
+	public static boolean ApproveOrDenyAccount(String customerName) {
 		
-		switch(i) {
-			case 1:
-				System.out.println("Customer Account Approved. ");
-				break;
-			case 2:
-				System.out.println("Customer Account Denied. ");
+		boolean isApproved = false;
+		
+		while(isApproved==false) {
+			
+			System.out.println("Primary account holder: " + customerName + 
+							"\n 1 - Approve or 2 - Deny? ");
+			int i = s.nextInt();
+		
+			switch(i) {
+				case 1:
+					System.out.println("Customer Account Approved. ");
+					isApproved = true;
+					return true;
+				case 2:
+					System.out.println("Customer Account Denied. ");
+					return false;
+				default:
+					System.out.println("Please input 1 or 2. ");
+			}		
+		
 		}
+		return isApproved;
 	}
 	
 }
