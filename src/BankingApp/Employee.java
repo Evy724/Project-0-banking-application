@@ -2,10 +2,7 @@ package BankingApp;
 
 import java.util.*;
 
-public class Employee {
-
-	public String name;
-	public String password;
+public class Employee extends Customer {
 	
 	static Scanner s = new Scanner(System.in);
 	

@@ -23,7 +23,8 @@ public class BankLogIn extends Customer {
 	
 		System.out.println("Please create a password: ");
 		String password = s.nextLine();
-		System.out.println("Your password is: " + password);
+		System.out.println("Your password is: " + password + "\nAn Employee will review your application");
+		
 		}
 	
 	public void CustomerLogIn() {
@@ -66,6 +67,11 @@ public class BankLogIn extends Customer {
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public static void LogOut() {
+		System.out.println("Goodbye! ");
+		System.exit(0);
 	}
 	
 	public static void validateUserName(String inputUserName, String userName) throws IllegalArgumentException {
@@ -115,7 +121,7 @@ public class BankLogIn extends Customer {
 				System.out.println("Login successful, welcome employee.");
 				
 			} else if(inputEmployeePassword.equals("adminPassword")) {
-				
+				System.out.println("Login successful, welcome admin.");
 			} else {
 				System.out.println("Login failed: invalid password ");
 				System.exit(0);
