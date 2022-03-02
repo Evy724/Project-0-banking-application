@@ -1,6 +1,6 @@
 package BankingApp;
 
-public class Admin {
+public class Admin extends Employee {
 
 	public String name;
 	public String password;

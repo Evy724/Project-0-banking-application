@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Customer {
 
-	private String name;
+	private String customerName;
 	private String accountType;
 	private long balance;
 	
@@ -13,7 +13,7 @@ public class Customer {
 	public void OpenAccount() {	//Method to open a new Customer Account
 		
 		System.out.println("Please enter your name: ");
-		name = s.nextLine();
+		customerName = s.nextLine();
 		
 		System.out.println("Please enter account type: ");
 		accountType = s.nextLine();
@@ -26,7 +26,7 @@ public class Customer {
 	
 	public void ShowAccount() {
 		
-		System.out.println("The account holder is: " + name);
+		System.out.println("The account holder is: " + customerName);
 		System.out.println("The account type is: " + accountType);
 		System.out.println("The account balance is: $" + balance);
 		
