@@ -120,7 +120,7 @@ public class BankLogIn extends BankingAppMain {
 	public static void validateUserName(String inputEmployeeUserName) throws IllegalArgumentException {
 		try {
 			if(inputEmployeeUserName.equalsIgnoreCase("employee")) {
-				Employee.EmployeeMenu();
+				
 			} else if(inputEmployeeUserName.equalsIgnoreCase("admin")) {
 				
 			} else {
