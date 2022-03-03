@@ -1,8 +1,11 @@
 package BankingApp;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-public class BankLogIn extends Customer {
+public class BankLogIn extends BankingAppMain {
+	
+	final static String outputFilePath = "/Project0/src/Serialization.txt";
 	
 	public String userName;
 	public String password;
@@ -16,6 +19,13 @@ public class BankLogIn extends Customer {
 
 	Scanner s = new Scanner(System.in);
 	
+	
+	HashMap<String, String> map = new HashMap<String, String>();
+	
+	File file = new File(outputFilePath);	//create file object
+	
+	BufferedWriter bf = null; 
+	
 	public void CreateUserAccount() {
 		System.out.println("Please create your username: ");
 		String userName = s.nextLine();
@@ -23,6 +33,13 @@ public class BankLogIn extends Customer {
 	
 		System.out.println("Please create a password: ");
 		String password = s.nextLine();
+		map.put(userName, password);
+		try {
+			bf = new BufferedWriter(new FileWriter(file));
+			bf.write(userName + ":" + password);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Your password is: " + password + "\nAn Employee will review your application");
 		
 		}
@@ -103,7 +120,7 @@ public class BankLogIn extends Customer {
 	public static void validateUserName(String inputEmployeeUserName) throws IllegalArgumentException {
 		try {
 			if(inputEmployeeUserName.equalsIgnoreCase("employee")) {
-				
+				Employee.EmployeeMenu();
 			} else if(inputEmployeeUserName.equalsIgnoreCase("admin")) {
 				
 			} else {

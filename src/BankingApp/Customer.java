@@ -1,5 +1,6 @@
 package BankingApp;
 
+import java.io.*;
 import java.util.*;
 
 public class Customer {
@@ -7,24 +8,56 @@ public class Customer {
 	private static String customerName;
 	private String jointCustomerName;
 	private String accountType;
-	private long balance;
+	private Long balance;
 	
 	Scanner s = new Scanner(System.in);
 	
+	final static String outputFilePath = "/Project0/src/Serialization.txt";
+	
+	HashMap<String, String> map = new HashMap<String, String>();
+	
+	File file = new File(outputFilePath);	//create file object
+	
+	BufferedWriter bf = null; 
+	
 	public void OpenAccount() {	//Method to open a new Customer Account
 		
+		try {
+			bf = new BufferedWriter(new FileWriter(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Please enter your name: ");
 		setCustomerName(s.nextLine());
-		
 		System.out.println("Please enter account type: \n1 - Personal, 2 - Joint");
 		accountType = s.nextLine();
 		if(accountType.equals("Joint")) {
 			System.out.println("Please enter the second Customer Name on the account: ");
 			setJointCustomerName(s.nextLine());
 		}
-			
+		map.put(customerName, accountType);
+		try {
+			bf.write(customerName + ":" + accountType);
+			bf.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Please enter initial balance: ");
 		balance = s.nextLong();
+		String balanceString = balance.toString();
+		map.put(customerName, balanceString);
+		try {
+			bf.write(customerName + ":" + balanceString);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bf.close();
+			} catch (Exception e) {
+				
+			}
+		}
+		
 	}
 	
 	
@@ -38,21 +71,57 @@ public class Customer {
 	}
 	
 	public void Deposit() {
+		try {
+			bf = new BufferedWriter(new FileWriter(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		long depositAmount;
 		System.out.println("How much would you like to deposit? ");
 		depositAmount = s.nextLong();
 		balance = balance + depositAmount;
 		System.out.println("Your new balance is: " + balance);
+		String balanceString = balance.toString();
+		map.put(customerName, balanceString);
+		try {
+			bf.write(customerName + ":" + balanceString);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bf.close();
+			} catch (Exception e) {
+				
+			}
+		}
 	}
 	
 	public void Withdraw() {
+		try {
+			bf = new BufferedWriter(new FileWriter(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		long withdrawAmount;
 		System.out.println("How much would you like to withdraw? ");
 		withdrawAmount = s.nextLong();
 		balance = balance - withdrawAmount;
 		System.out.println("Your new balance is: " + balance);
+		String balanceString = balance.toString();
+		map.put(customerName, balanceString);
+		try {
+			bf.write(customerName + ":" + balanceString);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bf.close();
+			} catch (Exception e) {
+				
+			}
+		}
 	}
 
 

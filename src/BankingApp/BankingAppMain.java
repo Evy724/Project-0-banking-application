@@ -20,19 +20,20 @@ public class BankingAppMain {
 				case 1:
 					bl.CreateUserAccount();
 					customer.OpenAccount();
-				break;	
+					break;	
 				case 2:
 					bl.CustomerLogIn();
 					CustomerMenu();
-				break;
+					break;
 				case 3:
 					bl.EmployeeLogIn();
-				break;
+					EmployeeMenu();
+					break;
 				case 4:
 					System.out.println("Goodbye! ");
 					System.exit(0);
 				default:
-					System.out.println("Please choose 1, 2, or 3, or 4. ");
+					System.out.println("Please choose a valid option. ");
 			}
 		} while (true);
 	}
@@ -41,21 +42,40 @@ public class BankingAppMain {
 		boolean input = false;
 		do {
 			System.out.println("Please make a selection: "
-					+ "\n1 - Show Account details, 2 - Deposit, 3 - Withdraw, 4 - Log out");
+					+ "\n1 - Show Account details, 2 - Deposit, 3 - Withdraw, 4 - Log out ");
 			int i = s.nextInt();
 			switch (i) {
 				case 1:
 					customer.ShowAccount(Customer.getCustomerName());
+					break;
 				case 2:
-					
+					customer.Deposit();
+					break;
 				case 3:
+					customer.Withdraw();
+					break;
 				case 4:
 					BankLogIn.LogOut();
 				default:
-					System.out.println("Please choose 1, 2, 3, or 4. ");
-					
-				
-		}
+					System.out.println("Please choose a valid option. ");			
+			}
 		} while (input == false); 
+	}
+	
+	public static void EmployeeMenu() {
+		boolean input = false;
+		do {
+			System.out.println("Please make a selection: "
+					+ "\n1 - Approve Or Deny an Application, 2 - Log out");
+			int i = s.nextInt();
+			switch(i) {
+				case 1:
+					System.out.println("Please input the first name of the customer. ");
+					String customerName = s.nextLine();
+					Employee.ApproveOrDenyAccount(customerName);
+				case 2:
+					BankLogIn.LogOut();
+			}
+		} while (input == false);
 	}
 }
