@@ -1,8 +1,15 @@
 package BankingApp;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Admin extends Employee {
+	
+	final static String outputFilePath = "./Project0/src/Serialization.txt";
+	
+	HashMap<String, String> map = new HashMap<String, String>();
+	
+	File file = new File(outputFilePath);	//create file object
 
 	static Scanner s = new Scanner(System.in);
 	

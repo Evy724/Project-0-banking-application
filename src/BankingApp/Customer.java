@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.*;
 
 public class Customer {
+	
+	final static String outputFilePath = "./Project0/src/Serialization.txt";
 
 	private static String customerName;
 	private String jointCustomerName;
@@ -12,18 +14,16 @@ public class Customer {
 	
 	Scanner s = new Scanner(System.in);
 	
-	final static String outputFilePath = "/Project0/src/Serialization.txt";
-	
 	HashMap<String, String> map = new HashMap<String, String>();
 	
 	File file = new File(outputFilePath);	//create file object
 	
-	BufferedWriter bf = null; 
+	BufferedWriter bw = null; 
 	
 	public void OpenAccount() {	//Method to open a new Customer Account
 		
 		try {
-			bf = new BufferedWriter(new FileWriter(file));
+			bw = new BufferedWriter(new FileWriter(file));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -37,8 +37,8 @@ public class Customer {
 		}
 		map.put(customerName, accountType);
 		try {
-			bf.write(customerName + ":" + accountType);
-			bf.newLine();
+			bw.write(customerName + ":" + accountType);
+			bw.newLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -47,12 +47,13 @@ public class Customer {
 		String balanceString = balance.toString();
 		map.put(customerName, balanceString);
 		try {
-			bf.write(customerName + ":" + balanceString);
+			bw.write(customerName + ":" + balanceString);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				bf.close();
+				bw.close();
+				System.exit(0);
 			} catch (Exception e) {
 				
 			}
@@ -72,7 +73,7 @@ public class Customer {
 	
 	public void Deposit() {
 		try {
-			bf = new BufferedWriter(new FileWriter(file));
+			bw = new BufferedWriter(new FileWriter(file));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -85,12 +86,12 @@ public class Customer {
 		String balanceString = balance.toString();
 		map.put(customerName, balanceString);
 		try {
-			bf.write(customerName + ":" + balanceString);
+			bw.write(customerName + ":" + balanceString);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				bf.close();
+				bw.close();
 			} catch (Exception e) {
 				
 			}
@@ -99,7 +100,7 @@ public class Customer {
 	
 	public void Withdraw() {
 		try {
-			bf = new BufferedWriter(new FileWriter(file));
+			bw = new BufferedWriter(new FileWriter(file));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -112,12 +113,12 @@ public class Customer {
 		String balanceString = balance.toString();
 		map.put(customerName, balanceString);
 		try {
-			bf.write(customerName + ":" + balanceString);
+			bw.write(customerName + ":" + balanceString);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				bf.close();
+				bw.close();
 			} catch (Exception e) {
 				
 			}

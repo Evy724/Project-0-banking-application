@@ -5,7 +5,7 @@ import java.util.*;
 
 public class BankLogIn extends BankingAppMain {
 	
-	final static String outputFilePath = "/Project0/src/Serialization.txt";
+	final static String outputFilePath = "./Project0/src/Serialization.txt";
 	
 	public String userName;
 	public String password;
@@ -24,7 +24,7 @@ public class BankLogIn extends BankingAppMain {
 	
 	File file = new File(outputFilePath);	//create file object
 	
-	BufferedWriter bf = null; 
+	BufferedWriter bw = null; 
 	
 	public void CreateUserAccount() {
 		System.out.println("Please create your username: ");
@@ -35,8 +35,8 @@ public class BankLogIn extends BankingAppMain {
 		String password = s.nextLine();
 		map.put(userName, password);
 		try {
-			bf = new BufferedWriter(new FileWriter(file));
-			bf.write(userName + ":" + password);
+			bw = new BufferedWriter(new FileWriter(file));
+			bw.write(userName + ":" + password);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
